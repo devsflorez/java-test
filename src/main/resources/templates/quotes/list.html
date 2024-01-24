@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes List</title>
+</head>
+<body>
+  <h1>Quotes List</h1>
+  <table>
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr th:each="quote : ${quotes}">
+              <td th:text="${quote.id}"></td>
+              <td th:text="${quote.name}"></td>
+              <td>
+                  <a th:href="@{/quotes/{id}(id=${quote.id})}">Show</a>
+                  <a th:href="@{/quotes/{id}/edit(id=${quote.id})}">Edit</a>
+                  <a th:href="@{/quotes/{id}/delete(id=${quote.id})}">Delete</a>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  <br>
+  <a href="/quotes/create">New Quote</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Quote</title>
+</head>
+<body>
+    <h1>Edit Quote</h1>
+    <form th:object="${quote}" th:action="@{/quotes/{id}/edit(id=${quote.id})}" method="post">
+        <label for="idDoctor">Doctor:</label>
+        <select name="idDoctor" id="idDoctor">
+            <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.first_name}"></option>
+        </select>
+        
+        <label for="idConsulta">Consulta:</label>
+        <select name="idConsulta" id="idConsulta">
+            <option th:each="consulting : ${consultings}" th:value="${consulting.id}" th:text="${consulting.floor}"></option>
+        </select>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{name}" required>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+    <br>
+    <a href="/quotes">Back to Quotes</a>
+</body>
+</html>

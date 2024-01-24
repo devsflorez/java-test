@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultings List</title>
+</head>
+<body>
+  <h1>Consultings List</h1>
+  <table>
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Floor</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr th:each="consulting : ${consultings}">
+              <td th:text="${consulting.id}"></td>
+              <td th:text="${consulting.name}"></td>
+              <td>
+                  <a th:href="@{/consultings/{id}(id=${consulting.id})}">Show</a>
+                  <a th:href="@{/consultings/{id}/edit(id=${consulting.id})}">Edit</a>
+                  <a th:href="@{/consultings/{id}/delete(id=${consulting.id})}">Delete</a>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  <br>
+  <a href="/consultings/create">New Consulting</a>
+</body>
+</html>

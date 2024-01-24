@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Doctor</title>
+</head>
+<body>
+    <h1>New Doctor</h1>
+    <form th:object="${doctor}" th:action="@{/doctors/create}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{name}" required>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+    <br>
+    <a href="/doctors">Back to Doctors</a>
+</body>
+</html>
